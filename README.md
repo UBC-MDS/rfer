@@ -1,8 +1,25 @@
 # Rfer
 
-Package description: Reimplementation of the `infer` R package, that offers a tidy way of developing statistical inference built on top of Tidyverse.
+### Team
 
-See list of functions below:  
+|Group Member |Github |
+|-|-|
+|Gabriel Bogo|[@GabrielBogo](https://github.com/GabrielBogo)|
+|Yuwei Lei |[@liuyuwei169](https://github.com/liuyuwei169)|
+|Davy Guo |[@DavyGuo](https://github.com/DavyGuo)|
+|Mohamad Makkaoui |[@makka3](https://github.com/makka3)|
+
+Reimplementation of the `infer` R package, that offers a tidy way of developing statistical inference built on top of Tidyverse.
+
+The infer package streamlines the process of reshuffling and bootstrapping of samples, calculating summary statistics and confidence intervals, and performing hypothesis tests for statistical inference. It does this using a combination of functions that are built with the emphasis on clear expressive code and using correct statistical grammar that explains the way the values are calculated and the tests are evaluated in statistical inference.
+
+With this package as the inspiration, rfer will have four main functions (specify,generate,calculate,get_ci) for the first iteration. These functions will, given a data frame and the specified response variable; calculate summary statistics and confidence intervals for the response variable. Further details follow in the description of the functions below.
+
+Where does `rfer` fit into the R ecosystem?
+
+Currently, `infer` does a great job at implementing what we've specified for the functions in the R ecosystem. Nevertheless, we will begin by developing similar functions for the initial iterations with the expectation that we will add on extra functions that will enhance `infer` package at a later time.
+
+## Functions
 
 ### `specify`
 
