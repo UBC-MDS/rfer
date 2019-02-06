@@ -5,8 +5,8 @@
 |Group Member |Github |
 |-|-|
 |Gabriel Bogo|[@GabrielBogo](https://github.com/GabrielBogo)|
-|Yuwei Lei |[@liuyuwei169](https://github.com/liuyuwei169)|
-|Davy Guo |[@DavyGuo](https://github.com/DavyGuo)|
+|Yuwei Liu |[@liuyuwei169](https://github.com/liuyuwei169)|
+| Weifeng (Davy) Guo |[@DavyGuo](https://github.com/DavyGuo)|
 |Mohamad Makkaoui |[@makka3](https://github.com/makka3)|
 
 Reimplementation of the `infer` R package, that offers a tidy way of developing statistical inference built on top of Tidyverse.
