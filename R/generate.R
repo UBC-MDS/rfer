@@ -6,7 +6,7 @@ generate <- function(x,n_samples,type){
   # x: tibble 
   #Tibble containing the response variable from which to sample 
   # n_samples: integer 
-  #The number of samples to be generated
+  #The number of samples to be generated. Cannot be negative or 0.
   # type: string
   #Specifies the method to regenerate the samples. Default: "Bootstrap" (the future implementations will allow for other types including "Permutation")
   
