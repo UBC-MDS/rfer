@@ -1,6 +1,6 @@
 # Contributing
 
-We're using Github to version control our work. By contributing to this project, you agree to abide by the [code of conduct](CONDUCT.MD).
+We're using Github to version control our work. By contributing to this project, you agree to abide by the [code of conduct](CONDUCT.md).
 
 ### How to contribute:
 
