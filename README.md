@@ -32,11 +32,11 @@ Inputs:
 
 Output:  
 
-- Dataframe with 1 column representing the response variable
+- Dataframe containing one column for response variable and zero or more columns for the explanatory variables. The first column is always the response.
 
 ### `generate`
 
-**Function Description**: generate multiple bootstrap samples for your a given response variable.
+**Function Description**: Generate bootstrap resamples and permutations
 
 Inputs:  
 
@@ -46,7 +46,7 @@ Inputs:
 
 Output:  
 
-- Dataframe with two columns: response variable and sample id.
+- Dataframe containing all resamples stacked vertically. Will keep all columns from the input data and an additional sample_id column to identify individual resamples.
 
 ### `calculate`
 
@@ -59,7 +59,7 @@ Inputs:
 
 Output:
 
-- Dataframe with length equal to number of resampled groups.
+- Dataframe of summarized data. Each row contains the summary statistic for a given resample..
 
 ### `get_ci`
 **Function Description**: return the bootstrap confidence interval for a point estimate.
@@ -72,4 +72,4 @@ Inputs:
 
 Output:
 
-- Dataframe (with 3 columns): Statistic (Point Estimate), Lower Bound, Upper Bound
+- Dataframe containing 1 row and columns for Statistic (Point Estimate), significance level, Lower Bound and Upper Bound.
