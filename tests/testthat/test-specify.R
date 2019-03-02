@@ -1,6 +1,6 @@
-library(testthat)
-library(tidyverse)
-library(gapminder)
+# library(testthat)
+# library(tidyverse)
+# library(gapminder)
 context("specify")
 
 gap_df <- gapminder %>%
