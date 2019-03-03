@@ -1,26 +1,16 @@
-# # library(testthat)
-# # library(tidyverse)
-# # library(gapminder)
-# context("specify")
-#
-# sampledf <- data_frame(response=c(1,2,2,3,3,4), sample_id=c(1,1,1,2,2,2))
-#
-# test_that("basic",{
-#
-#   expect_silent(calculate(sampledf))
-#
-#   expect_error(calculate(sample_id))
-#
-#   expect_error(calculate(response))
-#
-# })
-#
-# test_that("shape",{
-#
-#   expect_equal(nrow(calculate(sampledf)),3)
-#
-#   expect_equal(ncol(calculate(sampledf)),2)
-#
-#
-# })
+context("calculate")
+
+df_t <- data.frame(matrix(0:10,nrow=11,ncol=5))
+df_test <- tibble::as_tibble(df_t)
+df_test_2 <- tibble::as_tibble(df_t)
+names(df_test) <- c("sample_id","variable1","variable2","response","response1")
+names(df_test_2) <- c("variable1","variable2","variable3","response","response1")
+ 
+test_that("handling different inputs",{
+  expect_silent(calculate(df_test,column = "response"))
+  expect_silent(calculate(df_test,column = "response1"))
+  expect_error(calculate(df_test_2))
+  expect_error(calculate(df_test, column = response))
+})
+
 

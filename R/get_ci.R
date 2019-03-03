@@ -10,6 +10,16 @@
 #' @export
 #'
 #' @examples
+#' iris %>%
+#' specify(response=Sepal.Width) %>%
+#' generate(n_samples=10) %>%
+#' calculate(stat="mean") %>%
+#' get_ci(confidence_level=0.9,type="percentile")
+#' 
+#' df_t <- data.frame(runif(20))
+#' names(df_t) <- c("groups","stat")
+#' get_ci(data=df_t,confidence_level=0.92)
+#' 
 get_ci <- function(data,confidence_level = 0.95,point_estimate=NULL,type="percentile"){
   
   ##Check if someone sets Point Estimate

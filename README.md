@@ -19,6 +19,29 @@ Where does `rfer` fit into the R ecosystem?
 
 Currently, `infer` does a great job at implementing what we've specified for the functions in the R ecosystem. Nevertheless, we will begin by developing similar functions for the initial iterations with the expectation that we will add on extra functions that will enhance `infer` package at a later time.
 
+## Installation instructions
+
+To download and use this package:
+
+`devtools::install_github("https://github.com/UBC-MDS/rfer.git")`
+
+## Usable Example
+
+```
+library(rfer)
+library(dplyr)
+
+
+
+#Loading a sample dataset in Pandas
+iris_df <-- iris
+
+iris_width = specify(iris_df, response=Sepal.Width)
+iris_resampled = generate(iris_width, n_samples=30, type="bootstrap")
+width_mean = calculate(iris_resampled, stat="mean")
+width_ci = get_ci(mpg_mean,level=0.9)
+```
+
 ## Functions
 
 ### `specify`
@@ -59,7 +82,7 @@ Inputs:
 
 Output:
 
-- Dataframe of summarized data. Each row contains the summary statistic for a given resample..
+- Dataframe of summarized data. Each row contains the summary statistic for a given resample.
 
 ### `get_ci`
 **Function Description**: return the bootstrap confidence interval for a point estimate.
@@ -72,7 +95,7 @@ Inputs:
 
 Output:
 
-- Dataframe containing 1 row and columns for Statistic (Point Estimate), significance level, Lower Bound and Upper Bound.
+- Dataframe containing 1 row and columns for Statistic (Point Estimate), Significance Level, Lower Bound and Upper Bound.
 
 ### Coverage
 ![coverage.png](coverage.png)

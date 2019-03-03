@@ -13,6 +13,7 @@ test_that("handling different inputs",{
   expect_silent(get_ci(df_test,confidence_level=0.8))
   expect_error(get_ci(df_test_2))
   expect_error(get_ci(df_test,type="any"))
+  expect_error(get_ci("df_test",type="any"))
 })
 
 test_that("level can only be between 0 and 1",{
@@ -33,7 +34,7 @@ test_that("shape is correct",{
 test_that("type attribute works",{
   expect_silent(get_ci(df_test,type="percentile"))
   expect_error(get_ci(df_test,type="standarderror"))
-  
+
 })
 
 test_that("point estimate is null",{
