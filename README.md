@@ -73,3 +73,6 @@ Inputs:
 Output:
 
 - Dataframe containing 1 row and columns for Statistic (Point Estimate), significance level, Lower Bound and Upper Bound.
+
+### Coverage
+![coverage.png](coverage.png)
