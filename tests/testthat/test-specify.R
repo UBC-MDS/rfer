@@ -1,25 +1,17 @@
-# library(testthat)
-# library(tidyverse)
-# library(gapminder)
-# context("specify")
-#
-# gap_df <- gapminder %>%
-#   filter(year == 2007 & continent %in% c("Africa")) %>%
-#   specify(response = lifeExp)
-#
-#
-# test_that("enough parameters",{
-#
-#   expect_error(specify(gap_df))
-#
-#   expect_silent(specify(gap_df,country,explanatory=None))
-#
-#   expect_error(specify(lifeExp,country))
-#
-#   expect_silent(specify(gap_df,lifeExp,country))
-#
-# })
-#
-# test_that("number of rows",{
-#   expect_equal(nrow(specify(gap_df,lifeExp)[,1]),nrow(tibble(gap_df$lifeExp)))
-# })
+context("specify")
+
+iris_df <- tibble::as.tibble(iris)
+
+test_that("enough parameters",{
+
+  expect_error(specify(iris_df))
+
+  expect_error(specify(iris_df,response="nothing"))
+
+  expect_silent(specify(iris_df,response=Sepal.Width))
+
+})
+
+test_that("number of rows",{
+  expect_equal(nrow(specify(iris_df,Sepal.Width)[,1]),nrow(tibble(iris_df$Sepal.Width)))
+})
