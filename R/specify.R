@@ -13,22 +13,9 @@
 #' specify(lung,"time")
 #'
 
-specify <- function(x,response,explantory=NULL){
-  # Specify function takes a dataframe and a specified response variable column and returns a tibble with all the rows of the specified column
+specify <- function(x,response,explanatory=NULL){
 
-  # Parameters
-
-  # df: Tibble
-  # The dataframe that will be manipulated
-  # response: string
-  # Column name representing the response variable
-  # explanatory: string or vector of strings
-  # Column names representing the explanatory variables
-
-  # Outputs
-
-  # Tibble containing one column with response variable or many columns with the response as the first column followed by the explanatory variables
-  if (!tibble::is.tibble(x)){
+    if (!is.data.frame(x)){
     stop("TypeError: Input should be a data frame")
   }
 
@@ -43,14 +30,14 @@ specify <- function(x,response,explantory=NULL){
   col <- c(response)
 
   # if explantory value added
-  if (is.null(explantory)==FALSE){
-    if (is.character(explantory)==FALSE){
+  if (is.null(explanatory)==FALSE){
+    if (is.character(explanatory)==FALSE){
       stop("TypeError: Explantory should be of type character")
     }
-    col <- append(response,explantory)
+    col <- append(response,explanatory)
   }
 
-  df_outout <- x[col]
+  df_output <- x[col]
 
-  df_outout
+  df_output
 }
