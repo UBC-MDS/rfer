@@ -43,8 +43,8 @@ specify <- function(x,response,explantory=NULL){
   col <- c(response)
 
   # if explantory value added
-  if (!is.null(explantory)){
-    if (!is.character(explantory)){
+  if (is.null(explantory)==FALSE){
+    if (is.character(explantory)==FALSE){
       stop("TypeError: Explantory should be of type character")
     }
     col <- append(response,explantory)
