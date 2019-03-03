@@ -1,10 +1,10 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Rfer Vignette"
+author: "Gabe, Yuwei, Makk, Davey"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Rfer Vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,50 +16,72 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+## Overview
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+Reimplementation of the `infer` R package, that offers a tidy way of developing statistical inference built on top of Tidyverse.
 
-## Vignette Info
+The infer package streamlines the process of reshuffling and bootstrapping of samples, calculating summary statistics and confidence intervals, and performing hypothesis tests for statistical inference. It does this using a combination of functions that are built with the emphasis on clear expressive code and using correct statistical grammar that explains the way the values are calculated and the tests are evaluated in statistical inference.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+With this package as the inspiration, rfer will have four main functions (specify,generate,calculate,get_ci) for the first iteration. These functions will, given a data frame and the specified response variable; calculate summary statistics and confidence intervals for the response variable. Further details follow in the description of the functions below.
 
-## Styles
+## Data preparation
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+> In order to show an example of how the Rfer package works, we'll use an example using the old-faithful iris dataset. Boring, we know, but will get you up to speed with this package easier than other datasets. And it's fairly straightforward to interpret.
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+```{r warning=FALSE, message = FALSE}
+library(rfer)
+library(dplyr)
+library(magrittr)
 
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+iris_df <- iris %>%
+  mutate(Species = factor(Species))
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+## The Specify Function
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+> In the specify function, the objective is to create a dataframe that will be used in the remainder of the pipeline that contains the response variable that is looking to be studied, along with optionally some explanatory variables.
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r}
+Sep_Width <- iris_df %>%
+  specify(response=Sepal.Width)
 ```
 
-Also a quote using `>`:
+```{r}
+Sep_Width
+```
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+## The Generate Function
+
+> The objective of the generate function is to generate and create n samples (equivalent to the value set in the n_samples parameter)
+
+```{r}
+Sep_width_resamples <- Sep_Width %>%
+  generate(n_samples = 20)
+```
+
+```{r}
+head(Sep_width_resamples)
+```
+
+## The Calculate Function
+
+> The objective of the calculate function is to calculate a statistic for each of the resampled groups. Up until this version of release, only the 'mean' statistic is available to be calculated thus far.
+
+```{r}
+Sep_width_means <- Sep_width_resamples %>%
+  infer::calculate(stat="mean")
+```
+
+```{r}
+Sep_width_means
+```
+
+## The Get_CI Function
+
+> The objective of the Get CI function is to find the confidence intervals of the the resampled groups. The user has the choice to set the level between 0 and 1 non-inclusive.
+
+```{r}
+Sep_width_CI <- Sep_width_means %>%
+  get_ci(confidence_level = 0.9)
+```
+
