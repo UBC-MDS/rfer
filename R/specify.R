@@ -13,34 +13,30 @@
 #' specify(lung,"time")
 #'
 
-specify <- function(x,response,explanatory){
-  #Specify function takes a dataframe and a specified response variable column and returns a tibble with all the rows of the specified column
+specify <- function(x,response,explantory=NULL){
+  # Specify function takes a dataframe and a specified response variable column and returns a tibble with all the rows of the specified column
 
-  #Parameters
+  # Parameters
 
-  # x: Tibble
-  #The dataframe that will be manipulated
+  # df: Tibble
+  # The dataframe that will be manipulated
   # response: string
-  #Column name representing the response variable
+  # Column name representing the response variable
   # explanatory: string or vector of strings
-  #Column names representing the explanatory variables
+  # Column names representing the explanatory variables
 
-  #Outputs
+  # Outputs
 
-  #Tibble containing one column with response variable or many columns with the response as the first column followed by the explanatory variables
-  if (!tibble::is.tibble(df)){
+  # Tibble containing one column with response variable or many columns with the response as the first column followed by the explanatory variables
+  if (!tibble::is.tibble(x)){
     stop("TypeError: Input should be a data frame")
   }
 
-  if (is.data.frame(df)){
-    df <- as.tibble(df)
-  }
-
-  if (!is.null(response)){
+  if (is.null(response)==TRUE){
     stop("TypeError: Response missing")
   }
 
-  if (!is.character(response)){
+  if (is.character(response)==FALSE){
     stop("TypeError: Response should be of type character")
   }
 
@@ -49,12 +45,12 @@ specify <- function(x,response,explanatory){
   # if explantory value added
   if (!is.null(explantory)){
     if (!is.character(explantory)){
-      stop("TypeError: Response should be of type character")
+      stop("TypeError: Explantory should be of type character")
     }
-    col <- append(response,explanatory)
+    col <- append(response,explantory)
   }
 
-  df_outout <- df[col]
+  df_outout <- x[col]
 
   df_outout
 }

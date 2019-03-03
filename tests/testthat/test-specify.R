@@ -1,17 +1,24 @@
 context("specify")
 
-iris_df <- tibble::as.tibble(iris)
+test_df <- tibble::tibble(a = c(1,3,5,7,9), b = c(1,4,9,16,25), c=c(3,9,27,81,243))
 
-test_that("enough parameters",{
+test_that("Input parameters",{
 
-  expect_error(specify(iris_df))
+  # if the response is missing
+  expect_error(specify(test_df))
 
-  expect_error(specify(iris_df,response="nothing"))
+  # if the response is not one of the columns
+  expect_error(specify(test_df,response= "d"))
 
-  expect_silent(specify(iris_df,response=Sepal.Width))
+  expect_silent(specify(test_df, "a"))
 
 })
 
-test_that("number of rows",{
-  expect_equal(nrow(specify(iris_df,Sepal.Width)[,1]),nrow(tibble(iris_df$Sepal.Width)))
+test_that("output shape",{
+
+  # if the output
+  expect_equal(nrow(specify(test_df,"a")),nrow(test_df))
+
+  expect_equal(ncol(specify(test_df,"a")), 1)
+
 })
