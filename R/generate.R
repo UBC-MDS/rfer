@@ -10,6 +10,7 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr)
 #' gap_df <- gapminder::gapminder %>%
 #'     dplyr::filter(year == 2007 & continent %in% c("Africa"))
 #' generate(gap_df, n_samples=5, type="bootstrap")

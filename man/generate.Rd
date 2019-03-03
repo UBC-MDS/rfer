@@ -20,6 +20,7 @@ Tibble containing all the resamples in a dataframe with an additional column map
 Takes a tibble and generates n samples using either the bootstrapping or permutation methods
 }
 \examples{
+library(dplyr)
 gap_df <- gapminder::gapminder \%>\%
     dplyr::filter(year == 2007 & continent \%in\% c("Africa"))
 generate(gap_df, n_samples=5, type="bootstrap")
