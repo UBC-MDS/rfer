@@ -2,25 +2,24 @@
 % Please edit documentation in R/specify.R
 \name{specify}
 \alias{specify}
-\title{Specify the response from datr frame, and predictors (if any)}
+\title{Specify the response and predictors (if any) from dataframe.}
 \usage{
 specify(x, response, explanatory = NULL)
 }
 \arguments{
 \item{x}{A data frame}
 
-\item{response}{One column which will be chosen as repsonse}
+\item{response}{Character. One column which will be chosen as response}
 
-\item{explanatory}{The columns to be the explanatory variables}
+\item{explanatory}{Character. The columns to be the explanatory variables}
 }
 \value{
 Dataframe containing one column for response variable and zero or more columns for the explanatory variables. The first column is always the response.
 }
 \description{
-Specify the response from datr frame, and predictors (if any)
+Specify the response and predictors (if any) from dataframe.
 }
 \examples{
 # select Sepal.Length data from data frame `iris`
 specify(iris,"Sepal.Length")
-
 }

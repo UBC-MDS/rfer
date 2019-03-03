@@ -1,8 +1,8 @@
-#' Specify the response from datr frame, and predictors (if any)
+#' Specify the response and predictors (if any) from dataframe.
 #'
 #' @param x A data frame
-#' @param response One column which will be chosen as repsonse
-#' @param explanatory The columns to be the explanatory variables
+#' @param response Character. One column which will be chosen as response
+#' @param explanatory Character. The columns to be the explanatory variables
 #'
 #' @return Dataframe containing one column for response variable and zero or more columns for the explanatory variables. The first column is always the response.
 
@@ -11,8 +11,6 @@
 #' @examples
 #' # select Sepal.Length data from data frame `iris`
 #' specify(iris,"Sepal.Length")
-#'
-
 specify <- function(x,response,explanatory=NULL){
 
     if (!is.data.frame(x)){

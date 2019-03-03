@@ -15,7 +15,6 @@
 #'     dplyr::filter(year == 2007 & continent %in% c("Africa"))
 #' generate(gap_df, n_samples=5, type="bootstrap")
 generate <- function(x,n_samples,type="bootstrap"){
-
     if (type != "bootstrap") stop("The only resampling method implemented so far is 'bootstrap'")
     if (n_samples <= 0) stop("'n_samples' need to be greater than 0.")
 
