@@ -1,6 +1,6 @@
 #' Specify the response from datr frame, and predictors (if any)
 #'
-#' @param df A data frame
+#' @param x A data frame
 #' @param response One column which will be chosen as repsonse
 #' @param explanatory The columns to be the explanatory variables
 #'
@@ -9,8 +9,8 @@
 #' @export
 #'
 #' @examples
-#' # select time data from data frame `lung`
-#' specify(lung,"time")
+#' # select Sepal.Length data from data frame `iris`
+#' specify(iris,"Sepal.Length")
 #'
 
 specify <- function(x,response,explanatory=NULL){
