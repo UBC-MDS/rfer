@@ -9,12 +9,14 @@ Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: 
+Suggests:
     testthat,
     knitr,
     rmarkdown
-Imports: 
+Imports:
     dplyr,
-    gapminder
+    gapminder,
+    stats,
+    tibble
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
