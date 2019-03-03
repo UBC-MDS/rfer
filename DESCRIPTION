@@ -13,13 +13,10 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-<<<<<<< HEAD
 Imports:
-    dplyr
-=======
-Imports: 
     dplyr,
-    gapminder
->>>>>>> master
+    gapminder,
+    stats,
+    tibble
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
