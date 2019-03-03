@@ -14,5 +14,7 @@ Suggests:
     knitr,
     rmarkdown
 Imports: 
-    dplyr
+    dplyr,
+    gapminder
 VignetteBuilder: knitr
+RoxygenNote: 6.1.1
