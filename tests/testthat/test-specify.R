@@ -17,7 +17,7 @@ test_that("Input parameters",{
   expect_error(specify(test_df,response= "d"))
 
   # if the explantory type is not character
-  expect_error(specify(test_df,response= "d",explantory = 2))
+  expect_error(specify(test_df,response= "d",explanatory = 2))
 
   expect_silent(specify(test_df, "a"))
 
