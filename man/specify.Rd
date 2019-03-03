@@ -7,11 +7,11 @@
 specify(x, response, explanatory = NULL)
 }
 \arguments{
+\item{x}{A data frame}
+
 \item{response}{One column which will be chosen as repsonse}
 
 \item{explanatory}{The columns to be the explanatory variables}
-
-\item{df}{A data frame}
 }
 \value{
 Dataframe containing one column for response variable and zero or more columns for the explanatory variables. The first column is always the response.
@@ -20,7 +20,7 @@ Dataframe containing one column for response variable and zero or more columns f
 Specify the response from datr frame, and predictors (if any)
 }
 \examples{
-# select time data from data frame `lung`
-specify(lung,"time")
+# select Sepal.Length data from data frame `iris`
+specify(iris,"Sepal.Length")
 
 }
