@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/UBC-MDS/rfer.svg?branch=master)](https://travis-ci.org/UBC-MDS/rfer)
+
 # Rfer
 
 ### Team
