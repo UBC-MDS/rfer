@@ -2,6 +2,10 @@
 
 # Rfer
 
+The rfer package streamlines the process of reshuffling and bootstrapping of samples, calculating summary statistics and confidence intervals that assist in performing statistical inference. It does this using a combination of functions that are built with the emphasis on clear expressive code and using correct statistical grammar that explains the way the values are calculated and how the tests are evaluated in the process of inference.
+
+With this package as the inspiration, rfer will have four main functions (specify,generate,calculate,get_ci) for the first iteration. These functions will, given a data frame and the specified response variable; calculate summary statistics and confidence intervals for the response variable. Further details follow in the description of the functions.
+
 ### Team
 
 |Group Member |Github |
@@ -11,19 +15,18 @@
 |Weifeng (Davy) Guo |[@DavyGuo](https://github.com/DavyGuo)|
 |Mohamad Makkaoui |[@makka3](https://github.com/makka3)|
 
-The rfer package streamlines the process of reshuffling and bootstrapping of samples, calculating summary statistics and confidence intervals that assist in performing statistical inference. It does this using a combination of functions that are built with the emphasis on clear expressive code and using correct statistical grammar that explains the way the values are calculated and how the tests are evaluated in the process of inference.
-
-With this package as the inspiration, rfer will have four main functions (specify,generate,calculate,get_ci) for the first iteration. These functions will, given a data frame and the specified response variable; calculate summary statistics and confidence intervals for the response variable. Further details follow in the description of the functions.
-
 ## Installation instructions
 
-To download and use this package:
+To download (requires `devtools`):
 
-`devtools::install_github("https://github.com/UBC-MDS/rfer.git")`
+`devtools::install_github("UBC-MDS/rfer",build_opts = c("--no-resave-data", "--no-manual"))`
 
-`devtools::install_github("UBC-MDS/rfer",build_opts = c("--no-resave-data", "--no-manual"))
+To load into environment:
+
+`library(rfer)`
 
 ## Examples
+
 
 ```
 iris_width = specify(iris, response="Sepal.Width")
@@ -31,7 +34,6 @@ iris_resampled = generate(iris_width, n_samples=30, type="bootstrap")
 width_mean = calculate(iris_resampled,column = "Sepal.Width", stat="mean")
 width_ci = get_ci(width_mean,column="Sepal.Width",level=0.9)
 ```
-
 
 ```
 mtcars %>%
