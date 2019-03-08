@@ -17,16 +17,15 @@ With this package as the inspiration, rfer will have four main functions (specif
 
 ## Installation instructions
 
-To download (requires `devtools`):
+1. To download (requires [devtools](https://cran.r-project.org/web/packages/devtools/index.html)):
 
 `devtools::install_github("UBC-MDS/rfer",build_opts = c("--no-resave-data", "--no-manual"))`
 
-To load into environment:
+2. To load into environment:
 
 `library(rfer)`
 
 ## Examples
-
 
 ```
 iris_width = specify(iris, response="Sepal.Width")
