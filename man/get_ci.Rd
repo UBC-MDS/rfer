@@ -4,11 +4,13 @@
 \alias{get_ci}
 \title{Get Confidence Intervals}
 \usage{
-get_ci(data, confidence_level = 0.95, point_estimate = NULL,
-  type = "percentile")
+get_ci(data, column = NULL, confidence_level = 0.95,
+  point_estimate = NULL, type = "percentile")
 }
 \arguments{
 \item{data}{A dataframe/tibble with the calculated statistics in a column named 'stat'}
+
+\item{column}{A string that specifies the column name in the dataframe that will be used for calculations. Must be specified.}
 
 \item{confidence_level}{The confidence level specified  as a float between 0 and 1 inclusive. Default is set at 0.95}
 
@@ -22,4 +24,11 @@ As of this version only percentile has been implemented. Default is "percentile"
 }
 \description{
 Get Confidence Intervals
+}
+\examples{
+
+df_t <- data.frame(runif(20))
+names(df_t) <- c("randoms")
+get_ci(data=df_t,column="randoms",confidence_level=0.9)
+
 }
