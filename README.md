@@ -27,14 +27,20 @@ With this package as the inspiration, rfer will have four main functions (specif
 
 ## Examples
 
-```
+``` r
+
+#Using the iris dataset
+
 iris_width = specify(iris, response="Sepal.Width")
 iris_resampled = generate(iris_width, n_samples=30, type="bootstrap")
 width_mean = calculate(iris_resampled,column = "Sepal.Width", stat="mean")
 width_ci = get_ci(width_mean,column="Sepal.Width",level=0.9)
 ```
 
-```
+``` r
+
+#Using the mtcars dataset
+
 mtcars %>%
   specify(response = "hp") %>%
   generate(n_samples = 10,type = "bootstrap") %>%
