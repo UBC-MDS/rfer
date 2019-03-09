@@ -1,3 +1,6 @@
+^Meta$
+^doc$
+^coverage\.png$
 ^CONTRIBUTING\.md$
 ^CONDUCT\.md$
 ^LICENSE\.md$
