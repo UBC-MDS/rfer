@@ -31,10 +31,20 @@ With this package as the inspiration, rfer will have four main functions (specif
 ```{r warning=FALSE, message = FALSE}
 library(rfer)
 library(dplyr)
-library(magrittr)
+
+set.seed(41)
 
 iris_df <- iris %>%
   mutate(Species = factor(Species))
+
+#Rough method to get a value of the point estimate
+
+hp_point <- mtcars %>%
+  specify(response = "hp") %>%
+  generate(n_samples = 1) %>%
+  calculate(column = "hp",stat="mean")
+
+hp_point_estimate <- hp_point[[2]]
 ```
 
 ## The Specify Function
@@ -43,7 +53,7 @@ iris_df <- iris %>%
 
 ```{r}
 Sep_Width <- iris_df %>%
-  specify(response=Sepal.Width)
+  specify(response="Sepal.Width")
 ```
 
 ```{r}
@@ -69,7 +79,7 @@ head(Sep_width_resamples)
 
 ```{r}
 Sep_width_means <- Sep_width_resamples %>%
-  infer::calculate(stat="mean")
+  calculate(column="Sepal.Width",stat="mean")
 ```
 
 ```{r}
@@ -82,6 +92,25 @@ Sep_width_means
 
 ```{r}
 Sep_width_CI <- Sep_width_means %>%
-  get_ci(confidence_level = 0.9)
+  rfer::get_ci(column="Sepal.Width",confidence_level = 0.9)
+```
+
+```{r}
+Sep_width_CI
+```
+
+> Note, the Point Estimate is N/A above. This is because it is not specified by the user and not required when the method to calculate is the percentile method. If specified, the value will be displayed in the output.
+
+# An Overall Example
+
+> Ultimately the objective of the rfer package is to combine all of the above functions to result in a streamlined method to calculate confidence intervals (and eventually other estimates of interest) once a column/variable is specified. In the example below, we use the mtcars dataset (just to shake things up a little) and our objective is to arrive at the 90% confidence intervals of the hp across all the cars.
+
+
+```{r}
+mtcars %>%
+  specify(response = "hp") %>%
+  generate(n_samples = 10,type = "bootstrap") %>%
+  calculate(column = "hp",stat="mean") %>%
+  rfer::get_ci(column = "hp",confidence_level = 0.9,point_estimate = hp_point_estimate,type="percentile")
 ```
 
