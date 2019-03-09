@@ -2,13 +2,26 @@
 % Please edit documentation in R/calculate.R
 \name{calculate}
 \alias{calculate}
-\title{Title}
+\title{Calculate summary statistic for multiple samples}
 \usage{
-calculate(x, stat)
+calculate(x, column, stat = "mean")
 }
 \arguments{
-\item{stat}{}
+\item{x}{a tibble. Tibble containing all resampled observations. It must have a column called "sample_id"}
+
+\item{column}{a string. The name of the reponse column.}
+
+\item{stat}{a string. Specifies what type of summary statistic is to be calculated. For now, only mean is available.}
+}
+\value{
+Tibble containing the summarized data, one row for each resampled group (n_samples specified in generate)
 }
 \description{
-Title
+Calculate summary statistic for multiple samples
+}
+\examples{
+mtcars \%>\%
+specify(response = "hp") \%>\%
+generate(n_samples = 10,type = "bootstrap") \%>\%
+calculate(column = "hp",stat="mean")
 }
