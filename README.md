@@ -45,7 +45,7 @@ mtcars %>%
   specify(response = "hp") %>%
   generate(n_samples = 10,type = "bootstrap") %>%
   calculate(column = "hp",stat="mean") %>%
-  rfer::get_ci(column = "hp",confidence_level = 0.9,point_estimate = hp_point_estimate,type="percentile")
+  get_ci(column = "hp",confidence_level = 0.9, type="percentile")
 ```
 
 ### Coverage
