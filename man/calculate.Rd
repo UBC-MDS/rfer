@@ -20,6 +20,7 @@ Tibble containing the summarized data, one row for each resampled group (n_sampl
 Calculate summary statistic for multiple samples
 }
 \examples{
+`\%>\%` <- magrittr::`\%>\%`
 mtcars \%>\%
 specify(response = "hp") \%>\%
 generate(n_samples = 10,type = "bootstrap") \%>\%

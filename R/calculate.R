@@ -7,6 +7,7 @@
 #' @export
 #'
 #' @examples
+#' `%>%` <- magrittr::`%>%`
 #' mtcars %>%
 #' specify(response = "hp") %>%
 #' generate(n_samples = 10,type = "bootstrap") %>%
