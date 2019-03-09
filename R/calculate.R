@@ -7,13 +7,11 @@
 #' @export
 #'
 #' @examples
-#' `%>%` <- magrittr::`%>%`
+#' library(dplyr)
 #' mtcars %>%
 #' specify(response = "hp") %>%
 #' generate(n_samples = 10,type = "bootstrap") %>%
 #' calculate(column = "hp",stat="mean")
-
-
 
 calculate <- function(x,column,stat="mean"){
 
@@ -34,9 +32,7 @@ calculate <- function(x,column,stat="mean"){
   if(is.character(column)==FALSE){
     stop("You need to set column. the input of column should be a string and it is the name of the response column")
   }
-
-
-   `%>%` <- magrittr::`%>%`
+   # `%>%` <- magrittr::`%>%`
   # quo_col_var <- enquo(column)
 
   x <- x %>%
