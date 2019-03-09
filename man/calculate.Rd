@@ -4,18 +4,25 @@
 \alias{calculate}
 \title{Calculate summary statistic for multiple samples}
 \usage{
-calculate(x, column = "response", stat = "mean")
+calculate(x, column, stat = "mean")
 }
 \arguments{
-\item{x}{a tibble. Tibble containing all resampled observations.}
+\item{x}{a tibble. Tibble containing all resampled observations. It must have a column called "sample_id"}
 
-\item{column}{a string. the column name of the reponse column}
+\item{column}{a string. The name of the reponse column.}
 
 \item{stat}{a string. Specifies what type of summary statistic is to be calculated. For now, only mean is available.}
 }
 \value{
-Tibble containing the summarized data, one for each resampled group (n_samples specified in generate)
+Tibble containing the summarized data, one row for each resampled group (n_samples specified in generate)
 }
 \description{
 Calculate summary statistic for multiple samples
+}
+\examples{
+library(dplyr)
+mtcars \%>\%
+specify(response = "hp") \%>\%
+generate(n_samples = 10,type = "bootstrap") \%>\%
+calculate(column = "hp",stat="mean")
 }

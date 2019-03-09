@@ -34,7 +34,7 @@ With this package as the inspiration, rfer will have four main functions (specif
 iris_width = specify(iris, response="Sepal.Width")
 iris_resampled = generate(iris_width, n_samples=30, type="bootstrap")
 width_mean = calculate(iris_resampled,column = "Sepal.Width", stat="mean")
-width_ci = get_ci(width_mean,column="Sepal.Width",level=0.9)
+width_ci = get_ci(width_mean,column="Sepal.Width",confidence_level=0.9)
 ```
 
 ``` r
@@ -45,7 +45,7 @@ mtcars %>%
   specify(response = "hp") %>%
   generate(n_samples = 10,type = "bootstrap") %>%
   calculate(column = "hp",stat="mean") %>%
-  rfer::get_ci(column = "hp",confidence_level = 0.9,point_estimate = hp_point_estimate,type="percentile")
+  get_ci(column = "hp",confidence_level = 0.9, type="percentile")
 ```
 
 ### Coverage
